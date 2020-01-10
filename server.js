@@ -18,36 +18,58 @@ var tables = {
   };
 
 //route
-app.get("/", function(req, res) {
-    res.send("Welcome to Hot Restaurant booking page!!!");
-  });
-
 // app.get("/", function(req, res) {
-//     res.sendFile(path.join(__dirname, "view.html"));
+//     res.send("Welcome to Hot Restaurant booking page!!!");
 //   });
 
-// app.get("/all", function(req, res) {
-//     res.sendFile(path.join(__dirname, "all.html"));
-// });
+app.get("/", function(req, res) {
+    res.sendFile(path.join(__dirname, "index.html"));
+  });
+
+app.get("/all", function(req, res) {
+    res.sendFile(path.join(__dirname, "all.html"));
+});
+
+app.get("/add", function(req, res) {
+  res.sendFile(path.join(__dirname, "add.html"));
+});
+
+app.get("/api/tables/new", function(req, res) {
+  res.sendFile(path.join(__dirname, "add.html"));
+});
 
 // Displays all table
-app.get("/api/table", function(req, res) {
-    return res.json(table);
+app.get("/api/tables", function(req, res) {
+    return res.json(tables);
   });
 
-// app.get("/api/table", function(req, res) {
-//     var chosen = req.params.table;
+app.get("/api/table", function(req, res) {
+    var chosen = req.params.tables;
   
-//     console.log(chosen);
+    console.log(chosen);
   
-//     for (var i = 0; i < table.length; i++) {
-//       if (chosen === table[i].routeName) {
-//         return res.json(table[i]);
-//       }
-//     }
+    for (var i = 0; i < tables.length; i++) {
+      if (chosen === tables[i].routeName) {
+        return res.json(tables[i]);
+      }
+    }
   
-//     return res.json(false);
-//   });
+    return res.json(false);
+  });
+
+app.post("/api/tables/new", function(req, res) {
+
+  var newRes = req.body;
+
+  // You can read more about RegEx Patterns later https://www.regexbuddy.com/regex.html
+  newRes.routeName = newRes.name.replace(/\s+/g, "").toLowerCase();
+
+  console.log(newRes);
+
+  tables.push(newRes);
+
+  res.json(newRes);
+});
 
 
 
