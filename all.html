@@ -19,7 +19,7 @@
       <hr>
       <h3>Book Your Table Soon!</h3>
       <br>
-      <button class="btn btn-danger btn-lg" id="home"></span>Home</button></a>
+      <a href="/"><button class="btn btn-danger btn-lg" id="home"></span>Home</button></a>
       <a href="/add"><button class="btn btn-danger btn-lg" id="makeRes"></span>Make Reservation</button></a>
     </div>
     <div class="row">
@@ -50,12 +50,12 @@
             console.log(data[i]);
             var listGroupItem = $("<li class='list-group-item'>");
 
-            listGroupItem.append($("<h2>").text("Name: " + data[i].name));
-            listGroupItem.append($("<h3>").text("Role: " + data[i].role));
-            listGroupItem.append($("<h3>").text("Age: " + data[i].age));
-            listGroupItem.append($("<h3>").text("Force Points: " + data[i].forcePoints));
+            listGroupItem.append($("<h2>").text("Table: " + data[i].table));
+            listGroupItem.append($("<h3>").text("Name: " + data[i].name));
+            listGroupItem.append($("<h3>").text("ID: " + data[i].id));
+            listGroupItem.append($("<h3>").text("Email: " + data[i].email));
 
-            $("#character-section").append(listGroupItem);
+            $("#tables").append(listGroupItem);
   }
 });
 </script>
