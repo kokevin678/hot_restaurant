@@ -62,7 +62,6 @@
   </div>
 
   <script type="text/javascript">
-    // Question: What does this code do?
     $("#add-btn").on("click", function(event) {
       event.preventDefault();
 
@@ -72,7 +71,6 @@
         email: $("#email").val().trim(),
       };
 
-      // Question: What does this code do??
       $.post("/api/tables/new", newRes)
         .then(function(data) {
           console.log(data);
